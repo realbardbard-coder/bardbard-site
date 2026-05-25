@@ -1,4 +1,4 @@
-// minigames.jsx — launcher card + full-screen iframe overlay for the mini games
+import React from 'react';
 
 function MiniGames() {
   const [active, setActive] = React.useState(null); // game id or null
@@ -110,4 +110,4 @@ function MiniGames() {
   );
 }
 
-Object.assign(window, { MiniGames });
+export { MiniGames };

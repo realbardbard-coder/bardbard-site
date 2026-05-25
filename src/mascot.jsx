@@ -1,4 +1,4 @@
-// mascot.jsx — swinging wrecking-ball mascot
+import React from 'react';
 
 function Mascot() {
   return (
@@ -22,4 +22,4 @@ function Mascot() {
     </div>);
 }
 
-Object.assign(window, { Mascot });
+export { Mascot };

@@ -1,4 +1,5 @@
-// sections.jsx — portfolio section components
+import React from 'react';
+import { PostThumb } from './post-thumbs.jsx';
 
 const Icon = {
   X: () =>
@@ -599,7 +600,7 @@ function Ticker() {
 
 }
 
-Object.assign(window, {
+export {
   Hero, Connect, AboutMe, Stats, Partnerships, Featured, LatestVideo, PortfolioGrid,
   Countdown, Resources, Support, Ticker
-});
+};

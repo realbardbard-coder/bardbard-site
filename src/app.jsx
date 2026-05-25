@@ -1,4 +1,12 @@
-// app.jsx — Bard Bard portfolio orchestrator + Tweaks
+import React from 'react';
+import { createRoot } from 'react-dom/client';
+import { useTweaks, TweaksPanel, TweakSection, TweakRadio, TweakSelect, TweakColor as _TweakColor, TweakToggle, TweakSlider, TweakButton } from './tweaks-panel.jsx';
+import { Background } from './background.jsx';
+import { Mascot } from './mascot.jsx';
+import { MiniGames } from './minigames.jsx';
+import { Hero, Connect, AboutMe, Partnerships, Featured, PortfolioGrid, Countdown, Resources, Support, Ticker } from './sections.jsx';
+import './style.css';
+import './cursor.js';
 
 const ACCENTS = {
   cyan:    { color: "#5be3ff", soft: "rgba(91,227,255,0.14)", glow: "rgba(91,227,255,0.45)", border: "rgba(91,227,255,0.18)", borderS: "rgba(91,227,255,0.38)" },
@@ -109,7 +117,7 @@ function App() {
     { id: "featured", label: "Work" },
     { id: "portfolio", label: "Archive" },
     { id: "countdown", label: "Drop" },
-    { id: "support", label: "Supprt" },
+    { id: "support", label: "Support" },
   ];
 
   return (
@@ -242,14 +250,12 @@ function App() {
   );
 }
 
-// Map accent name → curated swatch palette for TweakColor visual
-// (TweakColor uses the value as hex if it looks like hex; map our keys to color arrays for nicer chips)
-const __origColor = TweakColor;
-window.TweakColor = function PatchedTweakColor(props) {
+// Maps accent name keys → hex swatches so TweakColor renders colored chips instead of name strings
+function TweakColor(props) {
   if (Array.isArray(props.options) && props.options.every(o => typeof o === "string" && ACCENTS[o])) {
     const colorOpts = props.options.map((k) => ACCENTS[k].color);
     const valueColor = ACCENTS[props.value] ? ACCENTS[props.value].color : props.value;
-    return __origColor({
+    return _TweakColor({
       ...props,
       options: colorOpts,
       value: valueColor,
@@ -259,8 +265,8 @@ window.TweakColor = function PatchedTweakColor(props) {
       },
     });
   }
-  return __origColor(props);
-};
+  return _TweakColor(props);
+}
 
 // ── AvatarUpload — custom Tweaks control for replacing the hero image.
 // Reads a chosen file, downscales it via canvas to keep persisted state
@@ -352,6 +358,4 @@ function AvatarUpload({ value, onChange }) {
     </div>
   );
 }
-window.AvatarUpload = AvatarUpload;
-
-ReactDOM.createRoot(document.getElementById("root")).render(<App />);
+createRoot(document.getElementById("root")).render(<App />);

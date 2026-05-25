@@ -1,4 +1,4 @@
-// background.jsx — animated background layers (stars, grid, fog, none)
+import React from 'react';
 
 function BgStars({ animate }) {
   const stars = React.useMemo(() => {
@@ -52,4 +52,4 @@ function Background({ mood, animate }) {
   );
 }
 
-Object.assign(window, { Background });
+export { Background };

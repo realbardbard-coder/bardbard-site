@@ -1,3 +1,5 @@
+import React from 'react';
+
 // post-thumbs.jsx — themed SVG illustrations for the Notable X Posts grid.
 // Each thumb is 320×180 (16:9), composed from geometric primitives + small
 // iconographic motifs that hint at the post's subject. Kept stylized rather
@@ -408,4 +410,4 @@ function Fallback() {
   );
 }
 
-Object.assign(window, { PostThumb });
+export { PostThumb };
