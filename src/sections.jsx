@@ -219,7 +219,7 @@ function Partnerships() {
   return (
     <div data-comment-anchor="partnerships">
       <div className="section-head">
-        <h2 className="section-title">Trusted by these brands</h2>
+        <h2 className="section-title">Trusted by These Brands</h2>
         <span className="mono faint partner-caption">brands i've worked with</span>
       </div>
       <div className="partner-grid">
