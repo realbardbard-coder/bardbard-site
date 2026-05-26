@@ -600,7 +600,87 @@ function Ticker() {
 
 }
 
+// ── Resume ───────────────────────────────────────────────────
+function Resume() {
+  const experience = [
+    { title: "CEO / Director of Operations", company: "PMI Park City", period: "May 2015 – Present" },
+    { title: "Video Production Manager", company: "Live Mailers", period: "Jul 2017" },
+    { title: "Media Producer", company: "Freelancer", period: "Jun 2016" },
+    { title: "Warehouse Manager & Asst. Production Manager", company: "McNeil Printing", period: "May 2014" },
+  ];
+  const education = [
+    { degree: "Associate", school: "Utah Valley University" },
+    { degree: "Certificate", school: "Employment Resource Center" },
+    { degree: "High School Diploma", school: "American Fork High School" },
+  ];
+  const skills = [
+    "Video Production", "Video Editing", "Video Shooting", "Branding",
+    "Content Strategy", "YouTube", "TikTok", "Instagram", "Facebook",
+    "Customer Acquisition", "Lead Generation", "Project Management",
+    "Senior Leadership", "Quality Control", "Property Management",
+    "AI Tools Proficiency",
+  ];
+
+  return (
+    <div className="card" data-comment-anchor="resume" id="resume">
+      <div className="card-head" style={{ marginBottom: 18 }}>
+        <div className="card-title-row">
+          <span className="pill">Résumé</span>
+          <a href="https://bardbard.xyz" target="_blank" rel="noopener" className="mono faint" style={{ fontSize: 12 }}>bardbard.xyz</a>
+        </div>
+      </div>
+
+      <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "24px 32px" }}>
+        {/* Experience */}
+        <div style={{ gridColumn: "1 / -1" }}>
+          <p className="mono faint" style={{ fontSize: 11, marginBottom: 10, textTransform: "uppercase", letterSpacing: "0.08em" }}>Experience</p>
+          <div style={{ display: "flex", flexDirection: "column", gap: 14 }}>
+            {experience.map((e) => (
+              <div key={e.company + e.period} style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", gap: 12 }}>
+                <div>
+                  <p style={{ margin: 0, fontWeight: 600, fontSize: 14 }}>{e.title}</p>
+                  <p className="dim" style={{ margin: "2px 0 0", fontSize: 13 }}>{e.company}</p>
+                </div>
+                <span className="mono faint" style={{ fontSize: 11, whiteSpace: "nowrap", paddingTop: 2 }}>{e.period}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Education */}
+        <div>
+          <p className="mono faint" style={{ fontSize: 11, marginBottom: 10, textTransform: "uppercase", letterSpacing: "0.08em" }}>Education</p>
+          <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
+            {education.map((e) => (
+              <div key={e.school}>
+                <p style={{ margin: 0, fontWeight: 600, fontSize: 14 }}>{e.degree}</p>
+                <p className="dim" style={{ margin: "2px 0 0", fontSize: 13 }}>{e.school}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Certifications */}
+        <div>
+          <p className="mono faint" style={{ fontSize: 11, marginBottom: 10, textTransform: "uppercase", letterSpacing: "0.08em" }}>Certifications</p>
+          <p style={{ margin: 0, fontWeight: 600, fontSize: 14 }}>Utah Driver's License</p>
+        </div>
+
+        {/* Skills */}
+        <div style={{ gridColumn: "1 / -1" }}>
+          <p className="mono faint" style={{ fontSize: 11, marginBottom: 10, textTransform: "uppercase", letterSpacing: "0.08em" }}>Skills</p>
+          <div style={{ display: "flex", flexWrap: "wrap", gap: 6 }}>
+            {skills.map((s) => (
+              <span key={s} className="pill" style={{ fontSize: 12 }}>{s}</span>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 export {
   Hero, Connect, AboutMe, Stats, Partnerships, Featured, LatestVideo, PortfolioGrid,
-  Countdown, Resources, Support, Ticker
+  Countdown, Resources, Support, Ticker, Resume
 };

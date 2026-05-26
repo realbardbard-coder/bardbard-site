@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Brad Jensen — Résumé</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      font-size: 11pt;
+      line-height: 1.5;
+      color: #1a1a1a;
+      background: #fff;
+      padding: 40px 48px;
+      max-width: 780px;
+      margin: 0 auto;
+    }
+
+    /* Header */
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 28px;
+      padding-bottom: 18px;
+      border-bottom: 2px solid #1a1a1a;
+    }
+
+    h1 {
+      font-size: 26pt;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      line-height: 1.1;
+    }
+
+    .header-right {
+      text-align: right;
+      font-size: 9.5pt;
+      color: #444;
+      line-height: 1.7;
+    }
+
+    .header-right a {
+      color: #1a1a1a;
+      font-weight: 600;
+      text-decoration: none;
+    }
+
+    .title-line {
+      font-size: 11.5pt;
+      font-weight: 500;
+      color: #444;
+      margin-top: 4px;
+    }
+
+    /* Section */
+    section {
+      margin-bottom: 22px;
+    }
+
+    .section-label {
+      font-size: 7.5pt;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #888;
+      margin-bottom: 10px;
+      padding-bottom: 4px;
+      border-bottom: 1px solid #e0e0e0;
+    }
+
+    /* Experience rows */
+    .exp-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 12px;
+    }
+
+    .exp-row:last-child { margin-bottom: 0; }
+
+    .exp-left { flex: 1; }
+
+    .exp-title {
+      font-weight: 600;
+      font-size: 11pt;
+    }
+
+    .exp-company {
+      font-size: 10pt;
+      color: #555;
+      margin-top: 1px;
+    }
+
+    .exp-date {
+      font-size: 9.5pt;
+      color: #777;
+      white-space: nowrap;
+      padding-top: 2px;
+      font-variant-numeric: tabular-nums;
+    }
+
+    /* Education */
+    .edu-row {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 8px;
+    }
+
+    .edu-row:last-child { margin-bottom: 0; }
+
+    .edu-degree { font-weight: 600; font-size: 11pt; }
+    .edu-school { font-size: 10pt; color: #555; }
+
+    /* Skills */
+    .skills-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .skill-tag {
+      font-size: 9.5pt;
+      font-weight: 500;
+      background: #f3f3f3;
+      border: 1px solid #e0e0e0;
+      border-radius: 4px;
+      padding: 2px 9px;
+      color: #333;
+    }
+
+    /* Two-col layout for edu + certs */
+    .two-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0 32px;
+    }
+
+    /* Footer */
+    footer {
+      margin-top: 28px;
+      padding-top: 12px;
+      border-top: 1px solid #e0e0e0;
+      font-size: 8.5pt;
+      color: #aaa;
+      text-align: center;
+    }
+
+    footer a { color: #888; }
+
+    @media print {
+      body { padding: 0; }
+      @page { margin: 28px 36px; size: letter; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div>
+      <h1>Brad Jensen</h1>
+      <p class="title-line">Content Creator · Filmmaker · Marketing Director</p>
+    </div>
+    <div class="header-right">
+      <a href="https://bardbard.xyz">bardbard.xyz</a><br />
+      realbardbard@gmail.com<br />
+      Utah, USA<br />
+      YouTube · TikTok · X @BardBard
+    </div>
+  </header>
+
+  <section>
+    <p class="section-label">Experience</p>
+
+    <div class="exp-row">
+      <div class="exp-left">
+        <p class="exp-title">CEO / Director of Operations</p>
+        <p class="exp-company">PMI Park City</p>
+      </div>
+      <span class="exp-date">May 2015 – Present</span>
+    </div>
+
+    <div class="exp-row">
+      <div class="exp-left">
+        <p class="exp-title">Video Production Manager</p>
+        <p class="exp-company">Live Mailers</p>
+      </div>
+      <span class="exp-date">Jul 2017</span>
+    </div>
+
+    <div class="exp-row">
+      <div class="exp-left">
+        <p class="exp-title">Media Producer</p>
+        <p class="exp-company">Freelancer</p>
+      </div>
+      <span class="exp-date">Jun 2016</span>
+    </div>
+
+    <div class="exp-row">
+      <div class="exp-left">
+        <p class="exp-title">Warehouse Manager &amp; Asst. Production Manager</p>
+        <p class="exp-company">McNeil Printing</p>
+      </div>
+      <span class="exp-date">May 2014</span>
+    </div>
+  </section>
+
+  <div class="two-col">
+    <section>
+      <p class="section-label">Education</p>
+      <div class="edu-row">
+        <div>
+          <p class="edu-degree">Associate</p>
+          <p class="edu-school">Utah Valley University</p>
+        </div>
+      </div>
+      <div class="edu-row">
+        <div>
+          <p class="edu-degree">Certificate</p>
+          <p class="edu-school">Employment Resource Center</p>
+        </div>
+      </div>
+      <div class="edu-row">
+        <div>
+          <p class="edu-degree">High School Diploma</p>
+          <p class="edu-school">American Fork High School</p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <p class="section-label">Certifications</p>
+      <p class="edu-degree">Utah Driver's License</p>
+    </section>
+  </div>
+
+  <section>
+    <p class="section-label">Skills</p>
+    <div class="skills-grid">
+      <span class="skill-tag">Video Production</span>
+      <span class="skill-tag">Video Editing</span>
+      <span class="skill-tag">Video Shooting</span>
+      <span class="skill-tag">Branding</span>
+      <span class="skill-tag">Content Strategy</span>
+      <span class="skill-tag">YouTube</span>
+      <span class="skill-tag">TikTok</span>
+      <span class="skill-tag">Instagram</span>
+      <span class="skill-tag">Facebook</span>
+      <span class="skill-tag">Customer Acquisition</span>
+      <span class="skill-tag">Lead Generation</span>
+      <span class="skill-tag">Project Management</span>
+      <span class="skill-tag">Senior Leadership</span>
+      <span class="skill-tag">Quality Control</span>
+      <span class="skill-tag">Property Management</span>
+      <span class="skill-tag">AI Tools Proficiency</span>
+    </div>
+  </section>
+
+  <footer>
+    <a href="https://bardbard.xyz">bardbard.xyz</a> · realbardbard@gmail.com
+  </footer>
+
+</body>
+</html>

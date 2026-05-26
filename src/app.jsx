@@ -4,7 +4,7 @@ import { useTweaks, TweaksPanel, TweakSection, TweakRadio, TweakSelect, TweakCol
 import { Background } from './background.jsx';
 import { Mascot } from './mascot.jsx';
 import { MiniGames } from './minigames.jsx';
-import { Hero, Connect, AboutMe, Partnerships, Featured, PortfolioGrid, Countdown, Resources, Support, Ticker } from './sections.jsx';
+import { Hero, Connect, AboutMe, Partnerships, Featured, PortfolioGrid, Countdown, Resources, Support, Ticker, Resume } from './sections.jsx';
 import './style.css';
 import './cursor.js';
 
@@ -37,10 +37,10 @@ const FONTS = {
 };
 
 const SECTION_ORDERS = {
-  default:  ["hero", "connect-row", "partnerships", "featured", "portfolio", "countdown", "resources", "support"],
-  work:     ["hero", "partnerships", "featured", "portfolio", "countdown", "connect-row", "resources", "support"],
-  social:   ["hero", "connect-row", "partnerships", "featured", "portfolio", "support", "countdown", "resources"],
-  pitch:    ["hero", "partnerships", "featured", "portfolio", "support", "resources", "countdown", "connect-row"],
+  default:  ["hero", "connect-row", "partnerships", "featured", "portfolio", "countdown", "resources", "support", "resume"],
+  work:     ["hero", "partnerships", "featured", "portfolio", "countdown", "connect-row", "resources", "support", "resume"],
+  social:   ["hero", "connect-row", "partnerships", "featured", "portfolio", "support", "countdown", "resources", "resume"],
+  pitch:    ["hero", "partnerships", "featured", "portfolio", "support", "resources", "countdown", "connect-row", "resume"],
 };
 
 const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
@@ -111,6 +111,7 @@ function App() {
     countdown: <Countdown key="countdown" />,
     resources: <Resources key="resources" />,
     support: <Support key="support" />,
+    resume: <Resume key="resume" />,
   };
 
   const jumpLinks = [
@@ -118,6 +119,7 @@ function App() {
     { id: "portfolio", label: "Archive" },
     { id: "countdown", label: "Drop" },
     { id: "support", label: "Support" },
+    { id: "resume", label: "Résumé" },
   ];
 
   return (
