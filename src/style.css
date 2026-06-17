@@ -324,23 +324,11 @@ button { font: inherit; color: inherit; cursor: pointer; }
 .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--gap-grid); }
 .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--gap-grid); }
 
-/* Connect + Mini Games side by side. Connect-stack column stacks
-   Connect on top of About Me so the right-hand games column matches
-   the visual mass of both. */
-.connect-games-grid {
-  display: grid;
-  grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
-  gap: var(--gap-grid);
-  align-items: start;
-}
 .connect-stack {
   display: flex;
   flex-direction: column;
   gap: var(--gap-grid);
   min-width: 0;
-}
-@media (max-width: 880px) {
-  .connect-games-grid { grid-template-columns: 1fr; }
 }
 
 @media (max-width: 880px) {
@@ -920,17 +908,14 @@ button { font: inherit; color: inherit; cursor: pointer; }
   color: var(--ink-faint);
 }
 
-/* Countdown card — Sui banner background.
-   Uses high specificity selector so [data-aesthetic="hud"] .card gradient
-   doesn't override it. */
+/* Countdown card — removed from the page along with the Countdown
+   component in sections.jsx; kept here in case it's needed again later.
+
 [data-aesthetic] .countdown-card {
   position: relative;
   overflow: hidden;
   isolation: isolate;
   border-color: rgba(91, 227, 255, 0.32);
-  /* Layer a darker overlay (banner is now ~10% more muted) on top of the
-     banner image. background-position pulls the logo region into the
-     top-right of the card. */
   background:
     linear-gradient(180deg, rgba(4, 7, 13, 0.45) 0%, rgba(4, 7, 13, 0.65) 100%),
     url("assets/sui-banner.jpeg") top right / cover no-repeat,
@@ -978,6 +963,7 @@ button { font: inherit; color: inherit; cursor: pointer; }
   margin-top: 4px;
   display: block;
 }
+*/
 
 /* ── X post cards ───────────────────────────────────────── */
 .post-grid {
@@ -1421,6 +1407,52 @@ button { font: inherit; color: inherit; cursor: pointer; }
   .section-head { gap: 10px; margin-bottom: 14px; }
   .section-title { font-size: clamp(17px, 5.2vw, 22px); }
   .section-title::before { width: 7px; height: 7px; }
+}
+
+/* ── Skills checklist (under Toolkit) ───────────────────── */
+.skills-block { margin-top: 22px; }
+.skills-pill { margin-bottom: 14px; }
+.skills-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+}
+.skills-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 14px;
+  border: var(--hair);
+  border-radius: var(--radius-sm);
+  background: rgba(255,255,255,0.015);
+  font-size: 13.5px;
+  color: var(--ink-dim);
+  transition: all 0.15s ease;
+}
+.skills-item:hover {
+  border-color: var(--border-strong);
+  background: var(--accent-soft);
+  color: var(--ink);
+}
+.skills-check {
+  display: grid;
+  place-items: center;
+  width: 22px;
+  height: 22px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  border: 1px solid var(--border-strong);
+  background: var(--accent-soft);
+  color: var(--accent);
+  box-shadow: 0 0 10px var(--accent-glow);
+}
+[data-aesthetic="brutalist"] .skills-item { border-radius: 0; }
+[data-aesthetic="brutalist"] .skills-check { border-radius: 0; }
+@media (max-width: 640px) {
+  .skills-list { grid-template-columns: 1fr; }
 }
 
 /* ── Partnerships grid ──────────────────────────────────────

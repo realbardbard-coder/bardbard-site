@@ -38,6 +38,11 @@ const Icon = {
   Play: () =>
   <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
       <path d="M8 5v14l11-7z" />
+    </svg>,
+
+  Check: () =>
+  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M20 6 9 17l-5-5" />
     </svg>
 
 };
@@ -414,79 +419,80 @@ function PortfolioGrid() {
 }
 
 // ── Countdown ────────────────────────────────────────────────
-function Countdown() {
-  const target = React.useMemo(() => new Date("2026-10-07T00:00:00+08:00").getTime(), []);
-  const [now, setNow] = React.useState(Date.now());
-  React.useEffect(() => {
-    const id = setInterval(() => setNow(Date.now()), 1000);
-    return () => clearInterval(id);
-  }, []);
-  const diff = Math.max(0, target - now);
-  const d = Math.floor(diff / 86400000);
-  const h = Math.floor(diff % 86400000 / 3600000);
-  const m = Math.floor(diff % 3600000 / 60000);
-  const s = Math.floor(diff % 60000 / 1000);
-  return (
-    <div className="card countdown-card" data-comment-anchor="countdown">
-      <div className="card-head">
-        <div className="card-title-row">
-          <span className="pill">NEXT SUI EVENT</span>
-          <span className="mono faint"></span>
-        </div>
-      </div>
-      <h2 className="h2" style={{ marginBottom: 6 }}>Sui Basecamp</h2>
-      <p className="dim" style={{ margin: 0 }}>Oct 7, 2026 · Singapore</p>
-      <div className="countdown">
-        <div><b>{String(d).padStart(2, "0")}</b><span>days</span></div>
-        <div><b>{String(h).padStart(2, "0")}</b><span>hours</span></div>
-        <div><b>{String(m).padStart(2, "0")}</b><span>minutes</span></div>
-        <div><b>{String(s).padStart(2, "0")}</b><span>seconds</span></div>
-      </div>
-    </div>);
-
-}
+// Removed from the page — kept here in case it's needed again later.
+//
+// function Countdown() {
+//   const target = React.useMemo(() => new Date("2026-10-07T00:00:00+08:00").getTime(), []);
+//   const [now, setNow] = React.useState(Date.now());
+//   React.useEffect(() => {
+//     const id = setInterval(() => setNow(Date.now()), 1000);
+//     return () => clearInterval(id);
+//   }, []);
+//   const diff = Math.max(0, target - now);
+//   const d = Math.floor(diff / 86400000);
+//   const h = Math.floor(diff % 86400000 / 3600000);
+//   const m = Math.floor(diff % 3600000 / 60000);
+//   const s = Math.floor(diff % 60000 / 1000);
+//   return (
+//     <div className="card countdown-card" data-comment-anchor="countdown">
+//       <div className="card-head">
+//         <div className="card-title-row">
+//           <span className="pill">NEXT SUI EVENT</span>
+//           <span className="mono faint"></span>
+//         </div>
+//       </div>
+//       <h2 className="h2" style={{ marginBottom: 6 }}>Sui Basecamp</h2>
+//       <p className="dim" style={{ margin: 0 }}>Oct 7, 2026 · Singapore</p>
+//       <div className="countdown">
+//         <div><b>{String(d).padStart(2, "0")}</b><span>days</span></div>
+//         <div><b>{String(h).padStart(2, "0")}</b><span>hours</span></div>
+//         <div><b>{String(m).padStart(2, "0")}</b><span>minutes</span></div>
+//         <div><b>{String(s).padStart(2, "0")}</b><span>seconds</span></div>
+//       </div>
+//     </div>);
+//
+// }
 
 // ── Resources ────────────────────────────────────────────────
 function Resources() {
   const items = [
   { img: "assets/tool-iphone.png", title: "iPhone 17 Pro", sub: "What I film on", href: "https://www.apple.com/iphone-17-pro/" },
   { img: "assets/tool-premiere.png", title: "Premiere Pro", sub: "What I edit on", href: "https://www.adobe.com/products/premiere.html" },
-  { img: "assets/tool-capcut.png", title: "Capcut", sub: "What I edit on (mobile)", href: "https://www.capcut.com/" },
-  { img: "assets/tool-sui.jpg", title: "Sui Network", sub: "Blockchain of choice", href: "https://sui.io/" },
-  { img: "assets/tool-slush.jpg", title: "Slush Wallet", sub: "Sui native wallet", href: "https://slush.app/" },
-  { img: "assets/tool-walrus.png", title: "Walrus Protocol", sub: "Decentralized data storage", href: "https://www.walrus.xyz/" }];
+  { img: "assets/tool-capcut.png", title: "Capcut", sub: "What I edit on (mobile)", href: "https://www.capcut.com/" }];
+
+  const skills = [
+  "Marketing", "Content Strategy", "Storytelling", "Social Media Content Creation",
+  "Short-form Video", "Graphic Design", "Community Building", "Content Analytics"];
 
   return (
     <div data-comment-anchor="resources">
       <div className="section-head">
-        <h2 className="section-title">Toolkit / Resources</h2>
+        <h2 className="section-title">Skills &amp; Toolkit</h2>
         <span className="mono faint">things i actually use</span>
       </div>
-      <div className="grid-2">
-        <div className="row-list">
-          {items.slice(0, 3).map((it) =>
-          <a key={it.title} href={it.href || "#"} target="_blank" rel="noopener" className="row">
-              <span className="row-thumb"><img src={it.img} alt="" /></span>
-              <div className="row-body">
-                <p className="row-title">{it.title}</p>
-                <p className="row-sub">{it.sub}</p>
-              </div>
-              <span className="row-arrow"><Icon.Arrow /></span>
-            </a>
+      <div className="row-list">
+        {items.map((it) =>
+        <a key={it.title} href={it.href || "#"} target="_blank" rel="noopener" className="row">
+            <span className="row-thumb"><img src={it.img} alt="" /></span>
+            <div className="row-body">
+              <p className="row-title">{it.title}</p>
+              <p className="row-sub">{it.sub}</p>
+            </div>
+            <span className="row-arrow"><Icon.Arrow /></span>
+          </a>
+        )}
+      </div>
+
+      <div className="skills-block">
+        <span className="pill skills-pill">Skills</span>
+        <ul className="skills-list">
+          {skills.map((s) =>
+          <li key={s} className="skills-item">
+              <span className="skills-check"><Icon.Check /></span>
+              {s}
+            </li>
           )}
-        </div>
-        <div className="row-list">
-          {items.slice(3).map((it) =>
-          <a key={it.title} href={it.href || "#"} target="_blank" rel="noopener" className="row">
-              <span className="row-thumb"><img src={it.img} alt="" /></span>
-              <div className="row-body">
-                <p className="row-title">{it.title}</p>
-                <p className="row-sub">{it.sub}</p>
-              </div>
-              <span className="row-arrow"><Icon.Arrow /></span>
-            </a>
-          )}
-        </div>
+        </ul>
       </div>
     </div>);
 
@@ -602,5 +608,5 @@ function Ticker() {
 
 export {
   Hero, Connect, AboutMe, Stats, Partnerships, Featured, LatestVideo, PortfolioGrid,
-  Countdown, Resources, Support, Ticker
+  Resources, Support, Ticker
 };
