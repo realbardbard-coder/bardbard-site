@@ -358,7 +358,7 @@ function Featured({ count = 4 }) {
 // into a real thumbnail link. Empty ids render a numbered placeholder.
 function ShortSamples({ count = 4 }) {
   const items = [
-  { id: "ZkE7sWbZvf8", title: "Ledger" },
+  { id: "ZkE7sWbZvf8", title: "Full Sail" },
   { id: "z5d9Ykmc39s", title: "Crypto" },
   { id: "4cdIKmGMsrU", title: "Sui" },
   { id: "uWj7WZNRQmQ", title: "Audric" }].
@@ -476,7 +476,7 @@ function PortfolioGrid() {
   { brand: "Ledger", title: "True Love Story", blurb: "Hardware wallet sales pitch disguised as a love story.", date: "Mar 28 · 2026", views: "20.1K", icon: "heart", color: "#ff5fb0", href: "https://x.com/BardBard/status/2041867167038370025" },
   { brand: "Mysten Labs", title: "Fate of SUI", blurb: "After much research — the fate of Sui isn't in charts.", date: "Mar 28 · 2026", views: "7.5K", icon: "sparkle", color: "#b98cff", href: "https://x.com/BardBard/status/2042003469968793852" },
   { brand: "Walrus", title: "Do More with Your Data", blurb: "Team Walrus gets the W on-chain AND on-court.", date: "Apr 12 · 2026", views: "9.3K", icon: "basketball", color: "#41d6a8", href: "https://x.com/BardBard/status/2041505581455028352" },
-  { brand: "Ledger", title: "Dungeons & DeFi", blurb: "Join the adventure and level up security with Ledger Nano Gen5.", date: "Mar 23 · 2026", views: "13.0K", icon: "dice", color: "#ffb84a", href: "https://x.com/BardBard/status/2037886697485283521" },
+  { brand: "Full Sail", title: "Dungeons & DeFi", blurb: "Join the adventure and level up security with Ledger Nano Gen5.", date: "Mar 23 · 2026", views: "13.0K", icon: "dice", color: "#ffb84a", href: "https://x.com/BardBard/status/2037886697485283521" },
   { brand: "Sui Network", title: "Introducing Vaults on Full Sail", blurb: "Welcome to the era of automation. Built on Sui.", date: "Feb 6 · 2026", views: "11.3K", icon: "vault", color: "#5be3ff", href: "https://x.com/BardBard/status/2032558640138236408" }];
 
   return (
