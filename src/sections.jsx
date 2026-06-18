@@ -364,6 +364,8 @@ function ShortSamples({ count = 4 }) {
   { id: "uWj7WZNRQmQ", title: "Audric" }].
   slice(0, count);
 
+  const [playing, setPlaying] = React.useState(null);
+
   const onThumbError = (e) => {
     const img = e.currentTarget;
     if (img.src.includes("oardefault")) img.src = img.src.replace("oardefault", "hqdefault");
@@ -378,11 +380,22 @@ function ShortSamples({ count = 4 }) {
       <div className="shorts-grid">
         {items.map((s, i) =>
         s.id ?
-        <a key={i} className="short-card" href={`https://www.youtube.com/shorts/${s.id}`} target="_blank" rel="noopener">
-            <img className="short-thumb-img" src={`https://i.ytimg.com/vi/${s.id}/oardefault.jpg`} onError={onThumbError} alt={s.title} loading="lazy" />
-            <span className="thumb-play"><Icon.Play /></span>
+        <div key={i} className="short-card" onClick={() => setPlaying(playing === i ? null : i)} style={{ cursor: "pointer" }}>
+            {playing === i ?
+            <iframe
+              className="short-embed"
+              src={`https://www.youtube.com/embed/${s.id}?autoplay=1&rel=0&playsinline=1`}
+              allow="autoplay; encrypted-media; fullscreen"
+              allowFullScreen
+              title={s.title} /> :
+
+            <>
+              <img className="short-thumb-img" src={`https://i.ytimg.com/vi/${s.id}/oardefault.jpg`} onError={onThumbError} alt={s.title} loading="lazy" />
+              <span className="thumb-play"><Icon.Play /></span>
+            </>
+            }
             <span className="short-title">{s.title}</span>
-          </a> :
+          </div> :
 
         <div key={i} className="short-card short-card--empty">
             <span className="short-num">{String(i + 1).padStart(2, "0")}</span>

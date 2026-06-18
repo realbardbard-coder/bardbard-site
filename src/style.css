@@ -1780,6 +1780,14 @@ a.partner-card:hover .partner-arrow { opacity: 1; transform: translate(2px, -2px
   height: 100%;
   object-fit: cover;
 }
+.short-embed {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+  z-index: 3;
+}
 .short-card .thumb-play {
   position: relative;
   z-index: 2;
