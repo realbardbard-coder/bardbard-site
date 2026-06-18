@@ -2148,13 +2148,13 @@ var raf=null,lastT=0,spawnT=0;
 var touchX=null,mouseDrag=false;
 
 var TYPES=[
-  {e:'🍕',pts:10,prob:.34,col:'#ff7030',lbl:'+10',full:12},
-  {e:'🍕',pts:25,prob:.16,col:'#ffd700',lbl:'+25 DOUBLE CHEESE!',glow:true,full:20},
-  {e:'📦',pts:100,prob:.06,col:'#00aaff',lbl:'+100 DOMINOS BOX!!',glow:true,full:28},
-  {e:'🌶️',pts:0,prob:.12,col:'#ff2200',lbl:'SPICY! +35% FULL!',danger:true,full:35},
-  {e:'💧',pts:0,prob:.10,col:'#44bbff',lbl:'-15% FULL!',drink:true,full:-15},
+  {e:'🍕',pts:10,prob:.27,col:'#ff7030',lbl:'+10',full:12},
+  {e:'🍕',pts:25,prob:.12,col:'#ffd700',lbl:'+25 DOUBLE CHEESE!',glow:true,full:20},
+  {e:'📦',pts:100,prob:.05,col:'#00aaff',lbl:'+100 DOMINOS BOX!!',glow:true,full:28},
+  {e:'🌶️',pts:0,prob:.09,col:'#ff2200',lbl:'SPICY! +35% FULL!',danger:true,full:35},
+  {e:'💧',pts:0,prob:.17,col:'#44bbff',lbl:'-15% FULL!',drink:true,full:-15},
   {e:'🧀',pts:50,prob:.13,col:'#ffbb00',lbl:'+50 EXTRA CHEESE!',full:18},
-  {e:'🥤',pts:0,prob:.09,col:'#00eebb',lbl:'-25% FULL! DIET SODA!',drink:true,full:-25},
+  {e:'🥤',pts:0,prob:.17,col:'#00eebb',lbl:'-25% FULL! DIET SODA!',drink:true,full:-25},
 ];
 
 function rnd(a,b){return a+Math.random()*(b-a);}
@@ -2249,7 +2249,7 @@ function drawBrian(){
   // pants
   ctx.fillStyle='#1e3a6b';ctx.fillRect(-20,18,16,34);ctx.fillRect(4,18,16,34);
   // belly (expands with fullness)
-  var bw=28+fullness*.22,bh=22+fullness*.14;
+  var bw=28+fullness*.10,bh=22+fullness*.06;
   ctx.fillStyle='#0060a9';ctx.beginPath();ctx.ellipse(0,4,bw,bh,0,0,Math.PI*2);ctx.fill();
   // body
   rrect(-28,-24,56,44,7);ctx.fill();
@@ -2351,7 +2351,7 @@ function handleCatch(p){
     addParts(cx,cy,col,14);
     addFloat(cx,cy-30,combo>=5?'🔥x'+multi+' COMBO! +'+pts:'+'+pts,col);
   }
-  brianScale=1+fullness/100*.9;
+  brianScale=1+fullness/100*.45;
   if(fullness>=100){items=[];setTimeout(triggerExplosion,200);}
 }
 
@@ -2384,7 +2384,7 @@ function update(dt){
   }
   var nl=Math.floor(score/300)+1;
   if(nl>level){level=nl;addFloat(W/2,H*.4,'🎉 LEVEL '+level+'!','#ffd700');}
-  brianScale=1+fullness/100*.9;
+  brianScale=1+fullness/100*.45;
   updateHUD();
 }
 
