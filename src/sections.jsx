@@ -165,7 +165,7 @@ function AboutMe() {
           <span className="pill" style={{ fontFamily: "\"Geist Mono\"" }}>About Me</span>
         </div>
       </div>
-      <p className="dim about-me-body">I'm an ADHD-fueled content creator, marketer, and filmmaker based in the US. I work with brands across the DeFi ecosystem - Sui Network, Ledger, Mysten Labs, Walrus, and more more - making promo videos, campaign content, and the occasional cinematic skit. When I'm not editing, you'll find me bouncing between ideas, chasing rabbit holes, and somehow still shipping. Let's make something weird together.
+      <p className="dim about-me-body">I'm an ADHD-fueled content creator, marketer, and filmmaker based in the US. I work with brands across the DeFi ecosystem - Sui Network, Ledger, Mysten Labs, Walrus, and more - making promo videos, campaign content, and the occasional cinematic skit. When I'm not editing, you'll find me bouncing between ideas, chasing rabbit holes, and somehow still shipping. Let's make something weird together.
 
       </p>
     </div>);

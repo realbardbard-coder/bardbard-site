@@ -33,6 +33,13 @@ function MiniGames() {
       blurb: "Bounce from the bottom — don't fall.",
       color: "rgba(251,191,36,1)",
     },
+    {
+      id: "bd",
+      icon: "🍕",
+      title: "Brian's Dominos",
+      blurb: "Help Brian catch his pizza order. HEY EVERYONE!",
+      color: "rgba(204,0,0,1)",
+    },
   ];
 
   // Listen for the iframe asking to close itself.
