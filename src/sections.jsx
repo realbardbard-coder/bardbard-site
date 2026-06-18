@@ -358,7 +358,7 @@ function Featured({ count = 4 }) {
 // into a real thumbnail link. Empty ids render a numbered placeholder.
 function ShortSamples({ count = 4 }) {
   const items = [
-  { id: "s-XTQHxsEv4", title: "Ledger" },
+  { id: "ZkE7sWbZvf8", title: "Ledger" },
   { id: "z5d9Ykmc39s", title: "Crypto" },
   { id: "4cdIKmGMsrU", title: "Sui" },
   { id: "uWj7WZNRQmQ", title: "Audric" }].
