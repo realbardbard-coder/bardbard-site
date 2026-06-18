@@ -4,9 +4,11 @@ import { useTweaks, TweaksPanel, TweakSection, TweakRadio, TweakSelect, TweakCol
 import { Background } from './background.jsx';
 import { Mascot } from './mascot.jsx';
 import { MiniGames } from './minigames.jsx';
-import { Hero, Connect, AboutMe, Partnerships, Featured, PortfolioGrid, Resources, Support, Ticker } from './sections.jsx';
+import { Hero, Connect, AboutMe, Partnerships, Featured, ShortSamples, PortfolioGrid, Resources, Support, Ticker } from './sections.jsx';
 import './style.css';
 import './cursor.js';
+
+// app.jsx — Bard Bard portfolio orchestrator + Tweaks
 
 const ACCENTS = {
   cyan:    { color: "#5be3ff", soft: "rgba(91,227,255,0.14)", glow: "rgba(91,227,255,0.45)", border: "rgba(91,227,255,0.18)", borderS: "rgba(91,227,255,0.38)" },
@@ -37,10 +39,10 @@ const FONTS = {
 };
 
 const SECTION_ORDERS = {
-  default:  ["hero", "connect-row", "partnerships", "featured", "portfolio", "resources", "games", "support"],
-  work:     ["hero", "partnerships", "featured", "portfolio", "connect-row", "resources", "games", "support"],
-  social:   ["hero", "connect-row", "partnerships", "featured", "portfolio", "support", "resources", "games"],
-  pitch:    ["hero", "partnerships", "featured", "portfolio", "support", "resources", "games", "connect-row"],
+  default:  ["hero", "connect-brands", "work-row", "portfolio", "resources", "support-games"],
+  work:     ["hero", "work-row", "portfolio", "connect-brands", "resources", "support-games"],
+  social:   ["hero", "connect-brands", "work-row", "portfolio", "support-games", "resources"],
+  pitch:    ["hero", "work-row", "portfolio", "resources", "support-games", "connect-brands"],
 };
 
 const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
@@ -95,38 +97,35 @@ function App() {
   const order = SECTION_ORDERS[t.sectionOrder] || SECTION_ORDERS.default;
 
   const sections = {
-    hero: <Hero key="hero" variant={t.heroVariant} name="Bard's Lair" tagline="ADHD Marketer | Content Creator | Film Maker | Editor" avatar={{ src: t.avatarSrc, scale: t.avatarScale, x: t.avatarX, y: t.avatarY, rotate: t.avatarRotate }} />,
-    "connect-row": (
-      <div key="connect-row" className="connect-stack">
-        <Connect />
-        <AboutMe />
+    hero: <Hero key="hero" variant={t.heroVariant} name="Meet Bard" tagline="ADHD Marketer | Content Creator | Film Maker | Editor" avatar={{ src: t.avatarSrc, scale: t.avatarScale, x: t.avatarX, y: t.avatarY, rotate: t.avatarRotate }} />,
+    "connect-brands": (
+      <div key="connect-brands" className="connect-brands-grid">
+        <div className="connect-stack">
+          <Connect />
+          <AboutMe />
+        </div>
+        <Partnerships />
       </div>
     ),
-    partnerships: <Partnerships key="partnerships" />,
-    featured: <Featured key="featured" count={4} />,
+    "work-row": (
+      <div key="work-row" className="work-grid">
+        <Featured count={4} />
+        <ShortSamples count={4} />
+      </div>
+    ),
     portfolio: <PortfolioGrid key="portfolio" />,
     resources: <Resources key="resources" />,
-    games: <MiniGames key="games" />,
-    support: <Support key="support" />,
+    "support-games": (
+      <div key="support-games" className="support-games-grid">
+        <Support />
+        <MiniGames />
+      </div>
+    ),
   };
-
-  const jumpLinks = [
-    { id: "featured", label: "Work" },
-    { id: "portfolio", label: "Archive" },
-    { id: "games", label: "Games" },
-    { id: "support", label: "Support" },
-  ];
 
   return (
     <>
       <Background mood={t.bgMood} animate={t.animateBg} />
-
-      {/* Side rail — jump nav */}
-      <nav className="side-rail" aria-label="Jump navigation">
-        {jumpLinks.map((j) => (
-          <a key={j.id} className="btn" href={`#${j.id}`}>↳ {j.label}</a>
-        ))}
-      </nav>
 
       <main className="shell">
         {order.map((id) => (
@@ -247,7 +246,8 @@ function App() {
   );
 }
 
-// Maps accent name keys → hex swatches so TweakColor renders colored chips instead of name strings
+// Map accent name → curated swatch palette for TweakColor visual
+// (TweakColor uses the value as hex if it looks like hex; map our keys to color arrays for nicer chips)
 function TweakColor(props) {
   if (Array.isArray(props.options) && props.options.every(o => typeof o === "string" && ACCENTS[o])) {
     const colorOpts = props.options.map((k) => ACCENTS[k].color);
@@ -263,7 +263,7 @@ function TweakColor(props) {
     });
   }
   return _TweakColor(props);
-}
+};
 
 // ── AvatarUpload — custom Tweaks control for replacing the hero image.
 // Reads a chosen file, downscales it via canvas to keep persisted state
@@ -355,4 +355,5 @@ function AvatarUpload({ value, onChange }) {
     </div>
   );
 }
+
 createRoot(document.getElementById("root")).render(<App />);

@@ -1,5 +1,7 @@
 import React from 'react';
 
+// background.jsx — animated background layers (stars, grid, fog, none)
+
 function BgStars({ animate }) {
   const stars = React.useMemo(() => {
     const out = [];
@@ -52,4 +54,6 @@ function Background({ mood, animate }) {
   );
 }
 
-export { Background };
+export {
+  Background
+};

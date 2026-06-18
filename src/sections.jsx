@@ -1,5 +1,6 @@
 import React from 'react';
-import { PostThumb } from './post-thumbs.jsx';
+
+// sections.jsx — portfolio section components
 
 const Icon = {
   X: () =>
@@ -38,11 +39,6 @@ const Icon = {
   Play: () =>
   <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
       <path d="M8 5v14l11-7z" />
-    </svg>,
-
-  Check: () =>
-  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M20 6 9 17l-5-5" />
     </svg>
 
 };
@@ -224,8 +220,10 @@ function Partnerships() {
   return (
     <div data-comment-anchor="partnerships">
       <div className="section-head">
-        <h2 className="section-title">Trusted by these Brands</h2>
-        <span className="mono faint partner-caption">brands i've worked with</span>
+        <div className="section-head-text">
+          <h2 className="section-title">Trusted Brands</h2>
+          <p className="section-subtitle">Brands and projects I've partnered with</p>
+        </div>
       </div>
       <div className="partner-grid">
         {items.map((p) => {
@@ -259,7 +257,7 @@ function Featured({ count = 4 }) {
   // Edit titles / tags / meta freely — `id` is the YouTube video ID and
   // drives both the thumbnail and the embedded player.
   const all = [
-  { id: "HzjHhEFLJYA", tag: "Video", title: "Promo Ad", meta: ["SUI NETWORK"] },
+  { id: "Hw20eGD4FW8", tag: "Video", title: "Promotional Ad", meta: ["LEDGER + HIDDENPPF"] },
   { id: "O7LExFoHQ6c", tag: "Video", title: "Campaign Promo", meta: ["LEDGER"] },
   { id: "q-KTkXld-P8", tag: "Video", title: "News Broadcast", meta: ["SUI NETWORK"] },
   { id: "eQjiCI47z68", tag: "Video", title: "Music Video", meta: ["SUI NETWORK"] },
@@ -295,10 +293,10 @@ function Featured({ count = 4 }) {
                 <>
                       <iframe
                     className="yt-iframe"
-                    src={`https://www.youtube.com/embed/${f.id}?autoplay=1&rel=0&modestbranding=1&playsinline=1`}
+                    src={`https://www.youtube.com/embed/${f.id}?autoplay=1&rel=0&modestbranding=1&playsinline=1&fs=1`}
                     title={f.title}
                     frameBorder="0"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; fullscreen; gyroscope; picture-in-picture; web-share"
                     referrerPolicy="strict-origin-when-cross-origin"
                     allowFullScreen />
                   
@@ -321,14 +319,12 @@ function Featured({ count = 4 }) {
                     alt=""
                     loading="lazy" />
                   
-                      <span className="tag">{f.tag}</span>
                       <span className="thumb-play"><Icon.Play /></span>
                     </button> :
 
 
                 <>
                     <span className="pattern" />
-                    <span className="tag">{f.tag}</span>
                     <span className="placeholder-label">thumbnail · drop image here</span>
                   </>
                 }
@@ -356,6 +352,49 @@ function Featured({ count = 4 }) {
     </div>);
 }
 
+// ── Short Video Samples ────────────────────────────────────
+// Vertical (9:16) short-form clips. Drop a YouTube ID into each `id`
+// (the part after youtube.com/shorts/ or youtu.be/) and the card turns
+// into a real thumbnail link. Empty ids render a numbered placeholder.
+function ShortSamples({ count = 4 }) {
+  const items = [
+  { id: "s-XTQHxsEv4", title: "Ledger" },
+  { id: "z5d9Ykmc39s", title: "Crypto" },
+  { id: "4cdIKmGMsrU", title: "Sui" },
+  { id: "uWj7WZNRQmQ", title: "Audric" }].
+  slice(0, count);
+
+  const onThumbError = (e) => {
+    const img = e.currentTarget;
+    if (img.src.includes("oardefault")) img.src = img.src.replace("oardefault", "hqdefault");
+  };
+
+  return (
+    <div className="shorts-col" data-comment-anchor="shorts">
+      <div className="section-head">
+        <h2 className="section-title">Short Video Samples</h2>
+        <a href="https://www.youtube.com/@realbardbard/shorts" target="_blank" rel="noopener" className="btn">See More →</a>
+      </div>
+      <div className="shorts-grid">
+        {items.map((s, i) =>
+        s.id ?
+        <a key={i} className="short-card" href={`https://www.youtube.com/shorts/${s.id}`} target="_blank" rel="noopener">
+            <img className="short-thumb-img" src={`https://i.ytimg.com/vi/${s.id}/oardefault.jpg`} onError={onThumbError} alt={s.title} loading="lazy" />
+            <span className="thumb-play"><Icon.Play /></span>
+            <span className="short-title">{s.title}</span>
+          </a> :
+
+        <div key={i} className="short-card short-card--empty">
+            <span className="short-num">{String(i + 1).padStart(2, "0")}</span>
+            <span className="thumb-play"><Icon.Play /></span>
+            <span className="placeholder-label">short · drop link here</span>
+          </div>
+        )}
+      </div>
+    </div>);
+
+}
+
 // ── Latest Video ─────────────────────────────────────────────
 function LatestVideo() {
   return (
@@ -378,17 +417,54 @@ function LatestVideo() {
 }
 
 // ── Portfolio Grid ───────────────────────────────────────────
+// Simple, themed line icons — one per post, color-matched to its topic.
+const PostIcon = {
+  pin:
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M12 21s7-6.4 7-11a7 7 0 1 0-14 0c0 4.6 7 11 7 11Z" />
+      <circle cx="12" cy="10" r="2.5" />
+    </svg>,
+  heart:
+  <svg viewBox="0 0 24 24" fill="currentColor">
+      <path d="M12 20.3s-7.1-4.6-9.4-9.2C1.1 8 2.4 4.4 5.8 4.4c2 0 3.4 1.2 4.4 2.7 1-1.5 2.4-2.7 4.4-2.7 3.4 0 4.7 3.6 3.2 6.7-2.3 4.6-9.4 9.2-9.4 9.2Z" />
+    </svg>,
+  sparkle:
+  <svg viewBox="0 0 24 24" fill="currentColor">
+      <path d="M12 2.5l1.9 5.6L19.5 10l-5.6 1.9L12 17.5l-1.9-5.6L4.5 10l5.6-1.9L12 2.5Z" />
+      <path d="M18.5 14.5l.8 2.3 2.2.8-2.2.8-.8 2.3-.8-2.3-2.2-.8 2.2-.8.8-2.3Z" />
+    </svg>,
+  basketball:
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round">
+      <circle cx="12" cy="12" r="9" />
+      <path d="M3.2 12h17.6M12 3.2v17.6M5.6 5.6c3.2 2.1 9.6 2.1 12.8 0M5.6 18.4c3.2-2.1 9.6-2.1 12.8 0" />
+    </svg>,
+  dice:
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round">
+      <rect x="4" y="4" width="16" height="16" rx="3.5" />
+      <circle cx="9" cy="9" r="1.25" fill="currentColor" stroke="none" />
+      <circle cx="15" cy="9" r="1.25" fill="currentColor" stroke="none" />
+      <circle cx="12" cy="12" r="1.25" fill="currentColor" stroke="none" />
+      <circle cx="9" cy="15" r="1.25" fill="currentColor" stroke="none" />
+      <circle cx="15" cy="15" r="1.25" fill="currentColor" stroke="none" />
+    </svg>,
+  vault:
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round">
+      <rect x="3" y="5" width="18" height="14" rx="2.5" />
+      <circle cx="12" cy="12" r="3.4" />
+      <path d="M12 8.6v-1M12 16.4v-1M15.4 12h1M7.6 12h-1" />
+    </svg>
+};
+
 function PortfolioGrid() {
-  // Each tile links to an X post. `theme` selects the themed SVG thumbnail
-  // composition (see src/post-thumbs.jsx) — drop the `img` screenshot in
-  // favor of a more cohesive, on-brand set.
+  // Each tile links to an X post. `icon` picks a PostIcon glyph and `color`
+  // tints the thumbnail + badge to match the post's topic.
   const items = [
-  { brand: "Sui Network", title: "Sui Miami Event", blurb: "An evening with Sui — great people, great venue, great vibes.", date: "May 6 · 2026", views: "4.9K", theme: "sui-miami", href: "https://x.com/BardBard/status/2051987522478129625" },
-  { brand: "Ledger", title: "True Love Story", blurb: "Hardware wallet sales pitch disguised as a love story.", date: "Mar 28 · 2026", views: "20.1K", theme: "ledger-love", href: "https://x.com/BardBard/status/2041867167038370025" },
-  { brand: "Mysten Labs", title: "Fate of SUI", blurb: "After much research — the fate of Sui isn't in charts.", date: "Mar 28 · 2026", views: "7.5K", theme: "sui-fate", href: "https://x.com/BardBard/status/2042003469968793852" },
-  { brand: "Walrus", title: "Do More with Your Data", blurb: "Team Walrus gets the W on-chain AND on-court.", date: "Apr 12 · 2026", views: "9.3K", theme: "walrus-w", href: "https://x.com/BardBard/status/2041505581455028352" },
-  { brand: "Ledger", title: "Dungeons & DeFi", blurb: "Join the adventure and level up security with Ledger Nano Gen5.", date: "Mar 23 · 2026", views: "13.0K", theme: "ledger-dnd", href: "https://x.com/BardBard/status/2037886697485283521" },
-  { brand: "Sui Network", title: "Introducing Vaults on Full Sail", blurb: "Welcome to the era of automation. Built on Sui.", date: "Feb 6 · 2026", views: "11.3K", theme: "sui-vaults", href: "https://x.com/BardBard/status/2032558640138236408" }];
+  { brand: "Sui Network", title: "Sui Miami Event", blurb: "An evening with Sui — great people, great venue, great vibes.", date: "May 6 · 2026", views: "4.9K", icon: "pin", color: "#5be3ff", href: "https://x.com/BardBard/status/2051987522478129625" },
+  { brand: "Ledger", title: "True Love Story", blurb: "Hardware wallet sales pitch disguised as a love story.", date: "Mar 28 · 2026", views: "20.1K", icon: "heart", color: "#ff5fb0", href: "https://x.com/BardBard/status/2041867167038370025" },
+  { brand: "Mysten Labs", title: "Fate of SUI", blurb: "After much research — the fate of Sui isn't in charts.", date: "Mar 28 · 2026", views: "7.5K", icon: "sparkle", color: "#b98cff", href: "https://x.com/BardBard/status/2042003469968793852" },
+  { brand: "Walrus", title: "Do More with Your Data", blurb: "Team Walrus gets the W on-chain AND on-court.", date: "Apr 12 · 2026", views: "9.3K", icon: "basketball", color: "#41d6a8", href: "https://x.com/BardBard/status/2041505581455028352" },
+  { brand: "Ledger", title: "Dungeons & DeFi", blurb: "Join the adventure and level up security with Ledger Nano Gen5.", date: "Mar 23 · 2026", views: "13.0K", icon: "dice", color: "#ffb84a", href: "https://x.com/BardBard/status/2037886697485283521" },
+  { brand: "Sui Network", title: "Introducing Vaults on Full Sail", blurb: "Welcome to the era of automation. Built on Sui.", date: "Feb 6 · 2026", views: "11.3K", icon: "vault", color: "#5be3ff", href: "https://x.com/BardBard/status/2032558640138236408" }];
 
   return (
     <div data-comment-anchor="portfolio">
@@ -399,9 +475,9 @@ function PortfolioGrid() {
       <div className="post-grid">
         {items.map((it, i) =>
         <a key={i} href={it.href || "#"} target="_blank" rel="noopener" className="post-card">
-            <div className="post-img post-img--thumb">
+            <div className="post-img post-img--thumb" style={{ "--post-color": it.color }}>
               <span className="post-brand">{it.brand}</span>
-              <PostThumb theme={it.theme} />
+              <span className="post-icon-badge" aria-hidden="true">{PostIcon[it.icon]}</span>
             </div>
             <div className="post-meta">
               <h4 className="post-title">{it.title}</h4>
@@ -419,41 +495,46 @@ function PortfolioGrid() {
 }
 
 // ── Countdown ────────────────────────────────────────────────
-// Removed from the page — kept here in case it's needed again later.
-//
-// function Countdown() {
-//   const target = React.useMemo(() => new Date("2026-10-07T00:00:00+08:00").getTime(), []);
-//   const [now, setNow] = React.useState(Date.now());
-//   React.useEffect(() => {
-//     const id = setInterval(() => setNow(Date.now()), 1000);
-//     return () => clearInterval(id);
-//   }, []);
-//   const diff = Math.max(0, target - now);
-//   const d = Math.floor(diff / 86400000);
-//   const h = Math.floor(diff % 86400000 / 3600000);
-//   const m = Math.floor(diff % 3600000 / 60000);
-//   const s = Math.floor(diff % 60000 / 1000);
-//   return (
-//     <div className="card countdown-card" data-comment-anchor="countdown">
-//       <div className="card-head">
-//         <div className="card-title-row">
-//           <span className="pill">NEXT SUI EVENT</span>
-//           <span className="mono faint"></span>
-//         </div>
-//       </div>
-//       <h2 className="h2" style={{ marginBottom: 6 }}>Sui Basecamp</h2>
-//       <p className="dim" style={{ margin: 0 }}>Oct 7, 2026 · Singapore</p>
-//       <div className="countdown">
-//         <div><b>{String(d).padStart(2, "0")}</b><span>days</span></div>
-//         <div><b>{String(h).padStart(2, "0")}</b><span>hours</span></div>
-//         <div><b>{String(m).padStart(2, "0")}</b><span>minutes</span></div>
-//         <div><b>{String(s).padStart(2, "0")}</b><span>seconds</span></div>
-//       </div>
-//     </div>);
-//
-// }
+// REMOVED from the layout (kept here in case it's wanted back later).
+// To restore: uncomment this component, re-add `Countdown` to the
+// window.Object.assign export at the bottom of this file, add
+// `countdown: <Countdown key="countdown" />` to the `sections` map in
+// app.jsx, and put "countdown" back into the SECTION_ORDERS arrays.
+/*
+function Countdown() {
+  const target = React.useMemo(() => new Date("2026-10-07T00:00:00+08:00").getTime(), []);
+  const [now, setNow] = React.useState(Date.now());
+  React.useEffect(() => {
+    const id = setInterval(() => setNow(Date.now()), 1000);
+    return () => clearInterval(id);
+  }, []);
+  const diff = Math.max(0, target - now);
+  const d = Math.floor(diff / 86400000);
+  const h = Math.floor(diff % 86400000 / 3600000);
+  const m = Math.floor(diff % 3600000 / 60000);
+  const s = Math.floor(diff % 60000 / 1000);
+  return (
+    <div className="card countdown-card" data-comment-anchor="countdown">
+      <div className="card-head">
+        <div className="card-title-row">
+          <span className="pill">NEXT SUI EVENT</span>
+          <span className="mono faint"></span>
+        </div>
+      </div>
+      <h2 className="h2" style={{ marginBottom: 6 }}>Sui Basecamp</h2>
+      <p className="dim" style={{ margin: 0 }}>Oct 7, 2026 · Singapore</p>
+      <div className="countdown">
+        <div><b>{String(d).padStart(2, "0")}</b><span>days</span></div>
+        <div><b>{String(h).padStart(2, "0")}</b><span>hours</span></div>
+        <div><b>{String(m).padStart(2, "0")}</b><span>minutes</span></div>
+        <div><b>{String(s).padStart(2, "0")}</b><span>seconds</span></div>
+      </div>
+    </div>);
 
-// ── Resources ────────────────────────────────────────────────
+}
+*/
+
+// ── Skills & Toolkit ─────────────────────────────────────────
 function Resources() {
   const items = [
   { img: "assets/tool-iphone.png", title: "iPhone 17 Pro", sub: "What I film on", href: "https://www.apple.com/iphone-17-pro/" },
@@ -462,7 +543,8 @@ function Resources() {
 
   const skills = [
   "Marketing", "Content Strategy", "Storytelling", "Social Media Content Creation",
-  "Short-form Video", "Graphic Design", "Community Building", "Content Analytics"];
+  "Social Media Management", "Short-form Video", "Long-form Video", "Graphic Design",
+  "Community Building", "Content Analytics"];
 
   return (
     <div data-comment-anchor="resources">
@@ -470,29 +552,34 @@ function Resources() {
         <h2 className="section-title">Skills &amp; Toolkit</h2>
         <span className="mono faint">things i actually use</span>
       </div>
-      <div className="row-list">
-        {items.map((it) =>
-        <a key={it.title} href={it.href || "#"} target="_blank" rel="noopener" className="row">
-            <span className="row-thumb"><img src={it.img} alt="" /></span>
-            <div className="row-body">
-              <p className="row-title">{it.title}</p>
-              <p className="row-sub">{it.sub}</p>
-            </div>
-            <span className="row-arrow"><Icon.Arrow /></span>
-          </a>
-        )}
-      </div>
-
-      <div className="skills-block">
-        <span className="pill skills-pill">Skills</span>
-        <ul className="skills-list">
-          {skills.map((s) =>
-          <li key={s} className="skills-item">
-              <span className="skills-check"><Icon.Check /></span>
-              {s}
-            </li>
+      <div className="resources-grid">
+        <div className="skills-block">
+          <span className="skills-eyebrow mono">// skills</span>
+          <ul className="skills-list">
+            {skills.map((s) =>
+            <li key={s} className="skill">
+                <span className="skill-check" aria-hidden="true">
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M20 6 9 17l-5-5" />
+                  </svg>
+                </span>
+                <span className="skill-label">{s}</span>
+              </li>
+            )}
+          </ul>
+        </div>
+        <div className="row-list toolkit-col">
+          {items.map((it) =>
+          <a key={it.title} href={it.href || "#"} target="_blank" rel="noopener" className="row">
+              <span className="row-thumb"><img src={it.img} alt="" /></span>
+              <div className="row-body">
+                <p className="row-title">{it.title}</p>
+                <p className="row-sub">{it.sub}</p>
+              </div>
+              <span className="row-arrow"><Icon.Arrow /></span>
+            </a>
           )}
-        </ul>
+        </div>
       </div>
     </div>);
 
@@ -607,6 +694,6 @@ function Ticker() {
 }
 
 export {
-  Hero, Connect, AboutMe, Stats, Partnerships, Featured, LatestVideo, PortfolioGrid,
+  Hero, Connect, AboutMe, Stats, Partnerships, Featured, ShortSamples, LatestVideo, PortfolioGrid,
   Resources, Support, Ticker
 };

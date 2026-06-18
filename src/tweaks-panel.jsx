@@ -1,3 +1,5 @@
+import React from 'react';
+
 
 // tweaks-panel.jsx
 // Reusable Tweaks shell + form-control helpers.
@@ -45,7 +47,6 @@
 //   }
 //
 // ─────────────────────────────────────────────────────────────────────────────
-import React from 'react';
 
 const __TWEAKS_STYLE = `
   .twk-panel{position:fixed;right:16px;bottom:16px;z-index:2147483646;width:280px;

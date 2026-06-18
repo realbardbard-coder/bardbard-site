@@ -1,5 +1,7 @@
 import React from 'react';
 
+// mascot.jsx — swinging wrecking-ball mascot
+
 function Mascot() {
   return (
     <div className="mascot" aria-hidden="true">
@@ -22,4 +24,6 @@ function Mascot() {
     </div>);
 }
 
-export { Mascot };
+export {
+  Mascot
+};

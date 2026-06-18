@@ -1,5 +1,7 @@
 import React from 'react';
 
+// minigames.jsx — launcher card + full-screen iframe overlay for the mini games
+
 function MiniGames() {
   const [active, setActive] = React.useState(null); // game id or null
   const games = [
@@ -110,4 +112,6 @@ function MiniGames() {
   );
 }
 
-export { MiniGames };
+export {
+  MiniGames
+};
