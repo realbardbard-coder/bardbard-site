@@ -4,7 +4,7 @@ import { useTweaks, TweaksPanel, TweakSection, TweakRadio, TweakSelect, TweakCol
 import { Background } from './background.jsx';
 import { Mascot } from './mascot.jsx';
 import { MiniGames } from './minigames.jsx';
-import { Hero, Connect, AboutMe, Partnerships, Featured, PortfolioGrid, Countdown, Resources, Support, Ticker } from './sections.jsx';
+import { Hero, Connect, AboutMe, Partnerships, Featured, PortfolioGrid, Resources, Support, Ticker } from './sections.jsx';
 import './style.css';
 import './cursor.js';
 
@@ -37,10 +37,10 @@ const FONTS = {
 };
 
 const SECTION_ORDERS = {
-  default:  ["hero", "connect-row", "partnerships", "featured", "portfolio", "countdown", "resources", "support"],
-  work:     ["hero", "partnerships", "featured", "portfolio", "countdown", "connect-row", "resources", "support"],
-  social:   ["hero", "connect-row", "partnerships", "featured", "portfolio", "support", "countdown", "resources"],
-  pitch:    ["hero", "partnerships", "featured", "portfolio", "support", "resources", "countdown", "connect-row"],
+  default:  ["hero", "connect-row", "partnerships", "featured", "portfolio", "resources", "games", "support"],
+  work:     ["hero", "partnerships", "featured", "portfolio", "connect-row", "resources", "games", "support"],
+  social:   ["hero", "connect-row", "partnerships", "featured", "portfolio", "support", "resources", "games"],
+  pitch:    ["hero", "partnerships", "featured", "portfolio", "support", "resources", "games", "connect-row"],
 };
 
 const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
@@ -97,26 +97,23 @@ function App() {
   const sections = {
     hero: <Hero key="hero" variant={t.heroVariant} name="Bard's Lair" tagline="ADHD Marketer | Content Creator | Film Maker | Editor" avatar={{ src: t.avatarSrc, scale: t.avatarScale, x: t.avatarX, y: t.avatarY, rotate: t.avatarRotate }} />,
     "connect-row": (
-      <div key="connect-row" className="connect-games-grid">
-        <div className="connect-stack">
-          <Connect />
-          <AboutMe />
-        </div>
-        <MiniGames />
+      <div key="connect-row" className="connect-stack">
+        <Connect />
+        <AboutMe />
       </div>
     ),
     partnerships: <Partnerships key="partnerships" />,
     featured: <Featured key="featured" count={4} />,
     portfolio: <PortfolioGrid key="portfolio" />,
-    countdown: <Countdown key="countdown" />,
     resources: <Resources key="resources" />,
+    games: <MiniGames key="games" />,
     support: <Support key="support" />,
   };
 
   const jumpLinks = [
     { id: "featured", label: "Work" },
     { id: "portfolio", label: "Archive" },
-    { id: "countdown", label: "Drop" },
+    { id: "games", label: "Games" },
     { id: "support", label: "Support" },
   ];
 
