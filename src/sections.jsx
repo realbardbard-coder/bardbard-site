@@ -207,8 +207,9 @@ function Stats() {
 function Partnerships() {
   const items = [
     { name: "Sui Network", logo: "assets/partner-sui.jpg",      href: "https://www.sui.io/" },
-    { name: "Ledger",      logo: "assets/partner-ledger.jpg",   href: "https://www.ledger.com/" },
-    { name: "Full Sail",   logo: "assets/partner-fullsail.jpg", href: "https://fullsail.finance/" },
+    { name: "Ledger",      logo: "assets/partner-ledger.jpg",     href: "https://www.ledger.com/" },
+    { name: "Avalanche",   logo: "assets/partner-avalanche.png", href: "https://www.avax.network/" },
+    { name: "Full Sail",   logo: "assets/partner-fullsail.jpg",  href: "https://fullsail.finance/" },
     { name: "Lofi",        logo: "assets/partner-lofi.jpg",     href: "https://lofitheyeti.com/" },
     { name: "Walrus",      logo: "assets/tool-walrus.png",      href: "https://walrus.xyz/" },
     { name: "Suiball",     logo: "assets/partner-suiball.jpg",  href: "https://order.suiball.com/" },
