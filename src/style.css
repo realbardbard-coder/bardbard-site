@@ -713,6 +713,7 @@ button { font: inherit; color: inherit; cursor: pointer; }
   height: 100%;
   object-fit: contain;
   object-position: center center;
+  transform: scale(0.78);
   display: block;
 }
 
