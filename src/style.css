@@ -711,8 +711,9 @@ button { font: inherit; color: inherit; cursor: pointer; }
   width: 100%;
   height: 100%;
   object-fit: cover;
-  /* Center on the face — image's subject sits in the upper portion */
-  object-position: 50% 22%;
+  object-position: 50% 30%;
+  transform: scale(0.55);
+  transform-origin: 50% 30%;
   display: block;
 }
 
