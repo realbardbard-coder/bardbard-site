@@ -97,7 +97,7 @@ function App() {
   const order = SECTION_ORDERS[t.sectionOrder] || SECTION_ORDERS.default;
 
   const sections = {
-    hero: <Hero key="hero" variant={t.heroVariant} name="Meet Bard" tagline="ADHD Marketer | Content Creator | Film Maker | Editor" avatar={{ src: t.avatarSrc, scale: t.avatarScale, x: t.avatarX, y: t.avatarY, rotate: t.avatarRotate }} />,
+    hero: <Hero key="hero" variant={t.heroVariant} name="Meet Bard" tagline="Social Media Marketer | Content Creator | Film Maker | Editor" avatar={{ src: t.avatarSrc, scale: t.avatarScale, x: t.avatarX, y: t.avatarY, rotate: t.avatarRotate }} />,
     "connect-brands": (
       <div key="connect-brands" className="connect-brands-grid">
         <div className="connect-stack">
