@@ -362,7 +362,7 @@ function ShortSamples({ count = 4 }) {
   { id: "UpXZxVq-n64", title: "Ledger" },
   { id: "N6LkTdIhJ1E", title: "Crypto" },
   { id: "4cdIKmGMsrU", title: "Sui" },
-  { id: "uWj7WZNRQmQ", title: "Audric" }].
+  { id: "ZkE7sWbZvf8", title: "Ledger" }].
   slice(0, count);
 
   const [playing, setPlaying] = React.useState(null);
