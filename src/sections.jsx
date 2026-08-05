@@ -473,7 +473,7 @@ function PortfolioGrid() {
   // Each tile links to an X post. `icon` picks a PostIcon glyph and `color`
   // tints the thumbnail + badge to match the post's topic.
   const items = [
-  { brand: "Sui Network", title: "Sui Miami Event", blurb: "An evening with Sui — great people, great venue, great vibes.", date: "May 6 · 2026", views: "4.9K", icon: "pin", color: "#5be3ff", href: "https://x.com/BardBard/status/2051987522478129625" },
+  { brand: "Sui Network", title: "Sui Miami Event", blurb: "An evening with Sui — great people, great venue, great vibes.", date: "May 6 · 2026", views: "4.9K", icon: "pin", color: "#5be3ff", href: "https://x.com/BardBard/status/2084277063188730173" },
   { brand: "Ledger", title: "True Love Story", blurb: "Hardware wallet sales pitch disguised as a love story.", date: "Mar 28 · 2026", views: "20.1K", icon: "heart", color: "#ff5fb0", href: "https://x.com/BardBard/status/2041867167038370025" },
   { brand: "Mysten Labs", title: "Fate of SUI", blurb: "After much research — the fate of Sui isn't in charts.", date: "Mar 28 · 2026", views: "7.5K", icon: "sparkle", color: "#b98cff", href: "https://x.com/BardBard/status/2042003469968793852" },
   { brand: "Walrus", title: "Do More with Your Data", blurb: "Team Walrus gets the W on-chain AND on-court.", date: "Apr 12 · 2026", views: "9.3K", icon: "basketball", color: "#41d6a8", href: "https://x.com/BardBard/status/2041505581455028352" },
