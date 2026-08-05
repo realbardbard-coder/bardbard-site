@@ -702,18 +702,19 @@ button { font: inherit; color: inherit; cursor: pointer; }
   height: 180px;
   border-radius: 50%;
   border: 2px solid var(--accent);
-  background: linear-gradient(135deg, oklch(0.7 0.18 200), oklch(0.6 0.22 320));
+  background: #000;
   box-shadow: 0 0 0 6px var(--bg-0), 0 0 60px var(--accent-glow);
   flex-shrink: 0;
   overflow: hidden;
+  position: relative;
 }
 .hero-avatar img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: 50% 30%;
-  transform: scale(0.55);
-  transform-origin: 50% 30%;
+  position: absolute;
+  width: 65%;
+  height: auto;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -38%);
   display: block;
 }
 
