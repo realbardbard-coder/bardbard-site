@@ -1476,7 +1476,7 @@ button { font: inherit; color: inherit; cursor: pointer; }
   gap: 12px;
   margin: 0;
   font-family: var(--f-display);
-  font-size: clamp(18px, 2.1vw, 26px);
+  font-size: clamp(14px, 1.5vw, 18px);
   font-weight: 700;
   letter-spacing: -0.02em;
   line-height: 1.05;

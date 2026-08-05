@@ -280,7 +280,7 @@ function Featured({ count = 4 }) {
   return (
     <div data-comment-anchor="featured">
       <div className="section-head">
-        <h2 className="section-title">Cinematic Campaigns</h2>
+        <h2 className="section-title">Long Form Video Samples</h2>
         <a href="https://www.youtube.com/@realbardbard" target="_blank" rel="noopener" className="btn">See More →</a>
       </div>
       <div className={count >= 3 ? "grid-2" : "grid-2"} style={count === 1 ? { gridTemplateColumns: "1fr" } : undefined}>
@@ -359,8 +359,8 @@ function Featured({ count = 4 }) {
 // into a real thumbnail link. Empty ids render a numbered placeholder.
 function ShortSamples({ count = 4 }) {
   const items = [
-  { id: "ZkE7sWbZvf8", title: "Full Sail" },
-  { id: "z5d9Ykmc39s", title: "Crypto" },
+  { id: "UpXZxVq-n64", title: "Ledger" },
+  { id: "N6LkTdIhJ1E", title: "Crypto" },
   { id: "4cdIKmGMsrU", title: "Sui" },
   { id: "uWj7WZNRQmQ", title: "Audric" }].
   slice(0, count);
@@ -375,7 +375,7 @@ function ShortSamples({ count = 4 }) {
   return (
     <div className="shorts-col" data-comment-anchor="shorts">
       <div className="section-head">
-        <h2 className="section-title">Short Video Samples</h2>
+        <h2 className="section-title">Short Form Video Samples</h2>
         <a href="https://www.youtube.com/@realbardbard/shorts" target="_blank" rel="noopener" className="btn">See More →</a>
       </div>
       <div className="shorts-grid">
