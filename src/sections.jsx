@@ -46,7 +46,7 @@ const Icon = {
 // ── Hero ─────────────────────────────────────────────────────
 function HeroAvatar({ name, tagline, avatar }) {
   const a = avatar || {};
-  const src    = a.src || "assets/bard-avatar.jpg";
+  const src    = a.src || "assets/bard-avatar-v2.jpg";
   const scale  = typeof a.scale  === "number" ? a.scale  : 1;
   const x      = typeof a.x      === "number" ? a.x      : 50;
   const y      = typeof a.y      === "number" ? a.y      : 22;
