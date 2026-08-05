@@ -70,7 +70,7 @@ function HeroAvatar({ name, tagline, avatar }) {
           <h1 className="h1 hero-avatar-name">{name}</h1>
           <p className="body-lg hero-avatar-tagline">{tagline}</p>
           <div className="hero-meta">
-            <span><b>BOLDLY GOING WHERE NO BARD HAS GONE BEFORE</b></span>
+            <span><b>BOLDLY GOING WHERE NO CREATOR HAS GONE BEFORE</b></span>
           </div>
         </div>
       </div>
