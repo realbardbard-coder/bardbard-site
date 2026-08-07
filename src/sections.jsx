@@ -360,7 +360,7 @@ function Featured({ count = 4 }) {
 function ShortSamples({ count = 4 }) {
   const items = [
   { id: "UpXZxVq-n64", title: "Ledger" },
-  { id: "N6LkTdIhJ1E", title: "Crypto" },
+  { id: "X--uLA9JtyU", title: "Ledger" },
   { id: "4cdIKmGMsrU", title: "Sui" },
   { id: "ZkE7sWbZvf8", title: "Ledger" }].
   slice(0, count);
