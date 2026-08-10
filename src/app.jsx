@@ -39,10 +39,10 @@ const FONTS = {
 };
 
 const SECTION_ORDERS = {
-  default:  ["hero", "connect-brands", "work-row", "portfolio", "resources", "support-games"],
-  work:     ["hero", "work-row", "portfolio", "connect-brands", "resources", "support-games"],
-  social:   ["hero", "connect-brands", "work-row", "portfolio", "support-games", "resources"],
-  pitch:    ["hero", "work-row", "portfolio", "resources", "support-games", "connect-brands"],
+  default:  ["hero", "connect-brands", "work-row", "resources", "portfolio", "support-games"],
+  work:     ["hero", "work-row", "resources", "connect-brands", "portfolio", "support-games"],
+  social:   ["hero", "connect-brands", "work-row", "resources", "support-games", "portfolio"],
+  pitch:    ["hero", "work-row", "resources", "portfolio", "support-games", "connect-brands"],
 };
 
 const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
