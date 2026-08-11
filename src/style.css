@@ -1016,20 +1016,27 @@ button { font: inherit; color: inherit; cursor: pointer; }
   color: var(--ink-faint);
   margin-top: 2px;
 }
-.short-thumb-wrap {
-  position: relative;
-  width: 100%;
-  flex: 1;
-  min-height: 0;
-  overflow: hidden;
-}
-.short-body {
-  padding: 10px 12px 12px;
+.short-overlay {
+  position: absolute;
+  left: 0; right: 0; bottom: 0;
+  z-index: 3;
+  padding: 40px 12px 12px;
+  background: linear-gradient(180deg, transparent, rgba(4,7,13,0.96) 55%);
   display: flex;
   flex-direction: column;
-  gap: 6px;
-  border-top: var(--hair);
-  flex-shrink: 0;
+  gap: 5px;
+  transform: translateY(calc(100% - 36px));
+  transition: transform 0.28s ease;
+}
+.short-card:hover .short-overlay {
+  transform: translateY(0);
+}
+.short-title-text {
+  font-family: var(--f-mono);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink);
 }
 .short-desc {
   font-size: 11px;

@@ -384,23 +384,21 @@ function ShortSamples({ count = 4 }) {
         {items.map((s, i) =>
         s.id ?
         <div key={i} className="short-card" onClick={() => setPlaying(playing === i ? null : i)} style={{ cursor: "pointer" }}>
-            <div className="short-thumb-wrap">
-              {playing === i ?
-              <iframe
-                className="short-embed"
-                src={`https://www.youtube.com/embed/${s.id}?autoplay=1&rel=0&playsinline=1`}
-                allow="autoplay; encrypted-media; fullscreen"
-                allowFullScreen
-                title={s.title} /> :
-              <>
-                <img className="short-thumb-img" src={`https://i.ytimg.com/vi/${s.id}/oardefault.jpg`} onError={onThumbError} alt={s.title} loading="lazy" />
-                <span className="thumb-play"><Icon.Play /></span>
-              </>
-              }
-              <span className="short-title">{s.title}</span>
-            </div>
-            <div className="short-body">
+            {playing === i ?
+            <iframe
+              className="short-embed"
+              src={`https://www.youtube.com/embed/${s.id}?autoplay=1&rel=0&playsinline=1`}
+              allow="autoplay; encrypted-media; fullscreen"
+              allowFullScreen
+              title={s.title} /> :
+            <>
+              <img className="short-thumb-img" src={`https://i.ytimg.com/vi/${s.id}/oardefault.jpg`} onError={onThumbError} alt={s.title} loading="lazy" />
+              <span className="thumb-play"><Icon.Play /></span>
+            </>
+            }
+            <div className="short-overlay">
               <span className="badge-e2e">End-to-end</span>
+              <span className="short-title-text">{s.title}</span>
               {s.desc && <p className="short-desc">{s.desc}</p>}
             </div>
           </div> :
