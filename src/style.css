@@ -996,6 +996,46 @@ button { font: inherit; color: inherit; cursor: pointer; }
   text-transform: uppercase;
   color: var(--ink-faint);
 }
+.badge-e2e {
+  display: inline-flex;
+  align-self: flex-start;
+  font-family: var(--f-mono);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #0d3340;
+  background: var(--accent);
+  padding: 3px 9px;
+  border-radius: 999px;
+  line-height: 1.4;
+}
+.feature-desc {
+  font-size: 12px;
+  line-height: 1.55;
+  color: var(--ink-faint);
+  margin-top: 2px;
+}
+.short-thumb-wrap {
+  position: relative;
+  width: 100%;
+  flex: 1;
+  min-height: 0;
+  overflow: hidden;
+}
+.short-body {
+  padding: 10px 12px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  border-top: var(--hair);
+  flex-shrink: 0;
+}
+.short-desc {
+  font-size: 11px;
+  line-height: 1.5;
+  color: var(--ink-faint);
+}
 
 /* Countdown card — Sui banner background.
    Uses high specificity selector so [data-aesthetic="hud"] .card gradient

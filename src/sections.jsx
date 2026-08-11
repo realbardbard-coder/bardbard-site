@@ -258,10 +258,10 @@ function Featured({ count = 4 }) {
   // Edit titles / tags / meta freely — `id` is the YouTube video ID and
   // drives both the thumbnail and the embedded player.
   const all = [
-  { id: "Hw20eGD4FW8", tag: "Video", title: "Promotional Ad", meta: ["LEDGER + HIDDENPPF"] },
-  { id: "O7LExFoHQ6c", tag: "Video", title: "Campaign Promo", meta: ["LEDGER"] },
-  { id: "q-KTkXld-P8", tag: "Video", title: "News Broadcast", meta: ["SUI NETWORK"] },
-  { id: "eQjiCI47z68", tag: "Video", title: "Music Video", meta: ["SUI NETWORK"] },
+  { id: "Hw20eGD4FW8", tag: "Video", title: "Promotional Ad", meta: ["LEDGER + HIDDENPPF"], desc: "1950s sitcom parody, concept through final cut, translating clear signing into a relatable narrative." },
+  { id: "O7LExFoHQ6c", tag: "Video", title: "Campaign Promo", meta: ["LEDGER"], desc: "Fantasy-genre parody built to make DeFi mechanics digestible through pop-culture storytelling." },
+  { id: "q-KTkXld-P8", tag: "Video", title: "News Broadcast", meta: ["SUI NETWORK"], desc: "Recurring Sui ecosystem news format, produced and hosted to build authority and engagement." },
+  { id: "eQjiCI47z68", tag: "Video", title: "Music Video", meta: ["SUI NETWORK"], desc: "Meme-driven personal narrative built for organic shareability and community reach." },
   { id: "", tag: "Short", title: "Tabs to Inbox Zero in 60s", meta: ["3.1M views", "TikTok"] },
   { id: "", tag: "Talk", title: "How I Edit With 47 Tabs Open", meta: ["XOXO Fest"] }];
 
@@ -331,6 +331,7 @@ function Featured({ count = 4 }) {
                 }
               </div>
               <div className="feature-body">
+                <span className="badge-e2e">End-to-end</span>
                 <h3 className="feature-title">
                   {f.id ?
                   <a href={`https://www.youtube.com/watch?v=${f.id}`} target="_blank" rel="noopener" className="title-link">
@@ -346,6 +347,7 @@ function Featured({ count = 4 }) {
                     </React.Fragment>
                   )}
                 </div>
+                {f.desc && <p className="feature-desc">{f.desc}</p>}
               </div>
             </div>);
         })}
@@ -359,10 +361,10 @@ function Featured({ count = 4 }) {
 // into a real thumbnail link. Empty ids render a numbered placeholder.
 function ShortSamples({ count = 4 }) {
   const items = [
-  { id: "UpXZxVq-n64", title: "Ledger" },
-  { id: "N6LkTdIhJ1E", title: "Crypto" },
-  { id: "4cdIKmGMsrU", title: "Sui" },
-  { id: "ZkE7sWbZvf8", title: "Ledger" }].
+  { id: "UpXZxVq-n64", title: "Ledger",  desc: "Problem/solution hook format, optimized to stop the scroll in the first two seconds." },
+  { id: "N6LkTdIhJ1E", title: "Crypto",  desc: "Educational hook breaking down perps trading into a fast, digestible short-form concept." },
+  { id: "4cdIKmGMsrU", title: "Sui",     desc: "Personality-driven short built around a relatable hook to drive watch-through." },
+  { id: "ZkE7sWbZvf8", title: "Ledger",  desc: "Product-feature short, framed as a personal recommendation to build trust and drive clicks." }].
   slice(0, count);
 
   const [playing, setPlaying] = React.useState(null);
@@ -382,20 +384,25 @@ function ShortSamples({ count = 4 }) {
         {items.map((s, i) =>
         s.id ?
         <div key={i} className="short-card" onClick={() => setPlaying(playing === i ? null : i)} style={{ cursor: "pointer" }}>
-            {playing === i ?
-            <iframe
-              className="short-embed"
-              src={`https://www.youtube.com/embed/${s.id}?autoplay=1&rel=0&playsinline=1`}
-              allow="autoplay; encrypted-media; fullscreen"
-              allowFullScreen
-              title={s.title} /> :
-
-            <>
-              <img className="short-thumb-img" src={`https://i.ytimg.com/vi/${s.id}/oardefault.jpg`} onError={onThumbError} alt={s.title} loading="lazy" />
-              <span className="thumb-play"><Icon.Play /></span>
-            </>
-            }
-            <span className="short-title">{s.title}</span>
+            <div className="short-thumb-wrap">
+              {playing === i ?
+              <iframe
+                className="short-embed"
+                src={`https://www.youtube.com/embed/${s.id}?autoplay=1&rel=0&playsinline=1`}
+                allow="autoplay; encrypted-media; fullscreen"
+                allowFullScreen
+                title={s.title} /> :
+              <>
+                <img className="short-thumb-img" src={`https://i.ytimg.com/vi/${s.id}/oardefault.jpg`} onError={onThumbError} alt={s.title} loading="lazy" />
+                <span className="thumb-play"><Icon.Play /></span>
+              </>
+              }
+              <span className="short-title">{s.title}</span>
+            </div>
+            <div className="short-body">
+              <span className="badge-e2e">End-to-end</span>
+              {s.desc && <p className="short-desc">{s.desc}</p>}
+            </div>
           </div> :
 
         <div key={i} className="short-card short-card--empty">
