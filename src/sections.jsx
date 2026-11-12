@@ -361,8 +361,8 @@ function Featured({ count = 4 }) {
 // into a real thumbnail link. Empty ids render a numbered placeholder.
 function ShortSamples({ count = 4 }) {
   const items = [
+  { id: "-doE7RJozJc", title: "Demo Reel", desc: "Content creator demo reel 2026: a fast-cut highlight of hosting, comedy, and branded work." },
   { id: "UpXZxVq-n64", title: "Ledger",  desc: "Problem/solution hook format, optimized to stop the scroll in the first two seconds." },
-  { id: "N6LkTdIhJ1E", title: "Crypto",  desc: "Educational hook breaking down perps trading into a fast, digestible short-form concept." },
   { id: "4cdIKmGMsrU", title: "Sui",     desc: "Personality-driven short built around a relatable hook to drive watch-through." },
   { id: "ZkE7sWbZvf8", title: "Ledger",  desc: "Product-feature short, framed as a personal recommendation to build trust and drive clicks." }].
   slice(0, count);
